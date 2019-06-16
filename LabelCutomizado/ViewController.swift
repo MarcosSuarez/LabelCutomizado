@@ -26,8 +26,18 @@ class ViewController: UIViewController {
         
         let myShadow = NSShadow()
         myShadow.shadowBlurRadius = 3
-        myShadow.shadowOffset = CGSize(width: 3, height: 3)
+        myShadow.shadowOffset = CGSize(width: 1, height: -1)
         myShadow.shadowColor = UIColor.black
+        
+        let todoElTexto = NSRange(location: 0, length: attributeString.length)
+        
+        let primeras5 =  NSRange(location: 12, length: 5)
+       
+        attributeString.addAttribute(NSAttributedString.Key.font, value: UIFont(name: "Chalkduster", size: 18.0)!, range: primeras5)
+        
+        let ultimas7 = NSRange(location: attributeString.length - 7, length: 7)
+        attributeString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: ultimas7)
+        attributeString.addAttribute(NSAttributedString.Key.underlineColor, value: UIColor.white, range: ultimas7)
         
         attributeString.addAttributes([
             NSAttributedString.Key.strokeWidth : 4,
@@ -35,7 +45,7 @@ class ViewController: UIViewController {
             NSAttributedString.Key.strikethroughStyle : 1,
             NSAttributedString.Key.strikethroughColor : UIColor.red,
             NSAttributedString.Key.shadow: myShadow
-            ],range: NSRange(location: 0, length: attributeString.length))
+            ],range: todoElTexto)
         
         label.attributedText = attributeString
     }
